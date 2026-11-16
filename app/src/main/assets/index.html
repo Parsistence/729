@@ -386,8 +386,6 @@ function rulesFor(n){
   let s='Two '+v(0)+'s make '+article(v(1))+' '+v(1)+' domino.';
   for(let t=1;t<n-1;t++){const L=len(t+1,n);s+=' Two '+v(t)+'s make '+article(v(t+1))+' '+v(t+1)+(L>1?' ('+L+' long).':'.')}
   if(n>=4)s+=' Long blocks bend to fit when a straight one has no room.';
-  const jump=v(3);
-  s+=n==3?' Slam one 6 into two others at once for an 18.':' Slam a block into two matching ones at once to jump two steps ('+v(1)+'s make '+article(jump)+' '+jump+').';
   return s;
 }
 function textUI(){
