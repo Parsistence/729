@@ -2,7 +2,14 @@
 
 A 2048-style puzzle game where tiles grow through intermediate blocks before reaching the next power. In base 3, two 3s make a 6 domino, and two 6s make a 9. Slam one block into two matching ones at once for a triple. Reach 729 to win.
 
-Settings let you pick the base (2–6, where base 2 is classic 2048) and the grid size (4×4 to 8×8). In base 4 and up, long blocks bend to fit when a straight one has no room.
+Game modes:
+
+- **Classic**: powers of 3 on 5×5, win at 729
+- **2048**: the original, powers of 2 on 4×4
+- **4's**: powers of 4 on 7×7, win at 1024
+- **Custom**: pick the base (2–6), grid (4×4 to 8×8) and winning tile
+
+Each mode keeps its own game in progress and best score. In base 4 and up, long blocks bend to fit when a straight one has no room.
 
 ## Install on Android
 

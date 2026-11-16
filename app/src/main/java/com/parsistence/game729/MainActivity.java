@@ -70,6 +70,16 @@ public class MainActivity extends Activity {
         d.setSystemUiVisibility(flags);
     }
 
+    /** Back closes the game's help or modes screen first; otherwise leaves the app. */
+    @Override
+    @SuppressWarnings("deprecation")
+    public void onBackPressed() {
+        if (web == null) { super.onBackPressed(); return; }
+        web.evaluateJavascript("window.appBack ? appBack() : false", result -> {
+            if (!"true".equals(result)) MainActivity.super.onBackPressed();
+        });
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle out) {
         super.onSaveInstanceState(out);
