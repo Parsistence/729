@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- gold 729 tile with a darker lip, like the in-game tiles -->
+    <path android:fillColor="#A97F00"
+        android:pathData="M39,31 H69 A9,9 0 0 1 78,40 V70 A9,9 0 0 1 69,79 H39 A9,9 0 0 1 30,70 V40 A9,9 0 0 1 39,31 Z" />
+    <path android:fillColor="#E0A800"
+        android:pathData="M39,28 H69 A9,9 0 0 1 78,37 V66 A9,9 0 0 1 69,75 H39 A9,9 0 0 1 30,66 V37 A9,9 0 0 1 39,28 Z" />
+    <path android:strokeColor="#3B2A3D" android:strokeWidth="5" android:fillColor="#00000000"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M35,42.5 H45 L38.5,60.5" />
+    <path android:strokeColor="#3B2A3D" android:strokeWidth="5" android:fillColor="#00000000"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M48.5,46.5 C48.5,43.5 51,42 54,42 C57.5,42 59.5,44 59.5,47 C59.5,50 57,52 54.5,54.5 L48.5,60.5 H59.5" />
+    <path android:strokeColor="#3B2A3D" android:strokeWidth="5" android:fillColor="#00000000"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M73,47.5 A5,5 0 1 1 63,47.5 A5,5 0 1 1 73,47.5 V54 Q73,60.5 66,60.5" />
+</vector>

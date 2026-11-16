@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.parsistence.game729'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.parsistence.game729'
+        minSdk 26
+        targetSdk 34
+        // CI sets GITHUB_RUN_NUMBER so every build installs as an update over the last one
+        versionCode((System.getenv('GITHUB_RUN_NUMBER') ?: '1').toInteger())
+        versionName "1.0." + (System.getenv('GITHUB_RUN_NUMBER') ?: '0')
+    }
+
+    signingConfigs {
+        // A fixed key checked into the repo, so new builds install over old ones
+        // and your saved games and scores are kept. Fine for sideloading; use a
+        // private key if you ever publish to the Play Store.
+        shared {
+            storeFile file('sideload.keystore')
+            storePassword 'game729'
+            keyAlias 'game729'
+            keyPassword 'game729'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.shared
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.shared
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.12.1'
+}
