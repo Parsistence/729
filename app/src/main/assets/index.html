@@ -22,7 +22,7 @@ LAYOUT: one screen: header, board, controls. Modes and help are separate layers
 *{box-sizing:border-box;min-width:0}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Fredoka,system-ui,sans-serif;overflow:hidden}
-.wrap{height:100vh;height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;
+.wrap{height:100vh;height:100dvh;max-width:520px;margin:0 auto;display:flex;flex-direction:column;touch-action:none;user-select:none;-webkit-user-select:none;
   padding:max(14px,env(safe-area-inset-top)) 16px max(14px,env(safe-area-inset-bottom))}
 header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
 .ttl{flex:1}
@@ -472,15 +472,17 @@ document.addEventListener('keydown',e=>{
   const k={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',a:'left',d:'right',w:'up',s:'down'}[e.key];
   if(k){e.preventDefault();go(k)}
 });
+// swipes count anywhere on the game screen, not just on the board; a swipe that starts on a button is a tap
+const screenEl=document.querySelector('.wrap');
 let sx=0,sy=0,tracking=false;
-board.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;tracking=true});
-board.addEventListener('pointerup',e=>{
+screenEl.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;sx=e.clientX;sy=e.clientY;tracking=true});
+screenEl.addEventListener('pointerup',e=>{
   if(!tracking)return;tracking=false;
   const dx=e.clientX-sx,dy=e.clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<24)return;
   go(Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up'));
 });
-board.addEventListener('pointercancel',()=>tracking=false);
-board.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+screenEl.addEventListener('pointercancel',()=>tracking=false);
+screenEl.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
 
 // ---- triple celebration (visual + haptic only) ----
 const RM=matchMedia('(prefers-reduced-motion: reduce)');
